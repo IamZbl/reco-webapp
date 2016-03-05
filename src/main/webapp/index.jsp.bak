@@ -1,0 +1,6 @@
+<html>
+<body>
+<h2>Welcome!</h2>
+<h3>Please <a href='/reco-webapp/findProductWithReco.do?query=${current.productCode}' >Click Here </a> to see products.
+</body>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.reco.model.Product" table="product" catalog="reco">
+        <id name="id" type="java.lang.Integer">
+            <column name="product_id" />
+            <generator class="increment" />
+        </id>
+        <version name="version" type="int" >        	
+            <column name="version" />
+        </version>
+        <property name="name" type="string">
+            <column name="name" length="45" not-null="true" unique="true" />
+        </property>
+		  <property name="productCode" type="string">
+            <column name="product_code" length="45" not-null="true" unique="true" />
+        </property>
+        
+        <property name="category" type="string">
+            <column name="category" length="45" not-null="true" />
+        </property>
+		 <property name="engine" type="java.lang.Float">
+            <column name="engine"  />
+        </property>
+         <property name="milage" type="java.lang.Float">
+            <column name="milage"  />
+        </property>
+		 <property name="year" type="java.lang.Integer">
+            <column name="year_of_launch" />
+        </property>
+		<property name="maxp" type="java.lang.Integer">
+            <column name="max_passenger" />
+        </property>
+         <set name="productAttributes" table="project_attribute" fetch="join" cascade="save-update, delete" >
+        <key>
+            <column name="product_id" not-null="true" />
+        </key>
+        <one-to-many class="com.reco.model.ProductAttribute" />
+    </set>
+    </class>
+</hibernate-mapping>

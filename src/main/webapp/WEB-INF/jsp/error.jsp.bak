@@ -1,0 +1,21 @@
+<%@ taglib prefix="c" uri="/core" %>
+<html>
+<head>
+    <title>Product Error</title>
+</head>
+<body>
+
+<h2>An Error Occured</h2>
+   <table>
+    <tr>
+        <td>Error:</td>
+        <td><c:out value="${error}" /></td>
+    </tr>
+    
+</table>  
+
+	 <br/>
+   <br/>
+    <td><a href='/reco-webapp/product.do' >Home</a></td>
+</body>
+</html>

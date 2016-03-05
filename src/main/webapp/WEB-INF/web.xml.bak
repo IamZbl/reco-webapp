@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0" metadata-complete="true">
+	<display-name>Recomendation App</display-name>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/*Context.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>hibernateFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter
+		</filter-class>
+
+	</filter>
+
+	<filter-mapping>
+		<filter-name>hibernateFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>recoapp</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+
+	</servlet>
+	<servlet>
+		<servlet-name>appInit</servlet-name>
+		<servlet-class>com.reco.servlet.AppInitServlet</servlet-class>
+
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+
+
+	<servlet-mapping>
+		<servlet-name>recoapp</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+<jsp-config> 
+	
+	<taglib>
+		<taglib-uri>/core</taglib-uri>
+		<taglib-location>/WEB-INF/c.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>/form</taglib-uri>
+		<taglib-location>/WEB-INF/spring.tld</taglib-location>
+	</taglib>
+</jsp-config> 
+
+
+</web-app>
